@@ -1,0 +1,16 @@
+aplicación sencilla con una ventana única 
+para incorporarla a una app más grande.
+
+ventana que permita modificar un archivo ini,
+inventar un archivo ini que tenga varios tipos de datos (cadena, float, integer, booleano...)
+
+el programa tiene que leer las opciones del archivo ini,
+presentar los valores en un form
+y guardar los valores en el archivo ini.
+
+botón aceptar
+botón cancelar
+
+La creación de los botones tiene que ser dinámica.
+
+ayuda: coger un archivo python, crear un formulario, y coger el código del formulario.

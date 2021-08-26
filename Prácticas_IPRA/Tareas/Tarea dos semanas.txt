@@ -1,0 +1,29 @@
+
+Si me atasco, cambiar un poco de aires.
+
+1ª Tarea: JAVASCRIPT aprender la teoría y coger soltura con el lenguaje.#######################################
+
+Crear una página que obtenga datos de un servidor webb sin salir de la própia página
+	hay muchas opciones pero se suele recurrir a un framework/librería.
+
+Tecnología REST: 
+
+Django Rest: librería 
+
+Django FLASK
+
+
+si necesito un servidor que devuelva datos: "Django Rest" (esto es ya si avanzo mucho)
+
+Pero me centro en el lado del servidor Javasript
+	utilizar frameworks para hacer más sencillo el desarrollo
+		framworks mas utilizados: "Angular", "React", "Vue"
+
+2ªFase: Pasar a un framework como Vue o a Vue directamente. https://es.vuejs.org/v2/guide/index.html.
+
+3ªFase: escribir un servidor Rest sencillo.
+
+
+Esto es para plantear un proyecto sencillito.
+
+ideas: Algo parecido a la app Django que he escrito.

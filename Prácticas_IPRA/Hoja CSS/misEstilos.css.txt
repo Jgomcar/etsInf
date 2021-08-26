@@ -1,0 +1,328 @@
+/*Estilo genérico*/
+table{color: lightgreen;}
+
+/*Asignación por id, por ejemplo en el html <div id = "producto">*/
+#producto {color:blue;background-color: yellow;}
+
+/*Asignación por clases, por ejemplo en html <p class="interior">*/
+.interior {color: red;}
+
+/*La propiedad font-family para la tipografía*/
+p.cursiv {font-family: cursive;}
+
+p.geor {font-family: georgia;}
+
+p.fant {font-family: fantasy;}
+
+p.new {font-family: 'Times New Roman';}
+
+p.monos {font-family: monospace;}
+
+/*En relación a lo anterior, para aplicarlo a un HTML 
+por ejemplo sería: <p class="monos"> hola mundo! </p>*/
+
+/*Es mejor cargar más de una familia tipográfica. De esta
+forma, si el navegador no puediese cargar el estilo principal
+trataría de cargar el siguiente*/
+
+p {font-family: Arial, Helvetica, sans-serif;}
+
+/*Valores genéricos font-family: initial, inherit, serif, sans-serif,
+monospace, cursive*/
+
+/*Tamaño Fuente CSS*/
+
+p.peque{font-size: small;}
+
+p.medio{font-size: medium;}
+
+p.grande{font-size: large;}
+
+p.mas-grande{font-size: x-large;}
+
+/*Valores de tamaño numéricos*/
+/*Pueden ser píxeles exactos "px" o tamaño relativo redimensionable "em"*/
+
+h1{font-size: 32px;}
+
+h2{font-size: 2em;}
+
+/*Estilos de fuente CSS*/
+
+p.normal {font-style: normal;}
+
+p.italic {font-style: italic;}  /*cursiva*/
+
+p.oblique {font-style: oblique;}/*oblicua, parecido a italic*/
+
+/*Propiedad del peso de la fuente*/
+
+p.ligero {font-weight: lighter;}
+
+p.normal {font-weight: normal;}
+
+p.negrita {font-weight: bold;}
+
+p.pesado {font-weight: bolder;}
+
+/*también sirven valores numéricos*/
+p.cien {font-weight: 100;}
+
+
+/*Font-variant: cambiar el texto a mayúsculas pequeñas*/
+p.small {font-variant: small-caps;}
+
+/*Propiedad text-align para alinear el texto horizontalmente*/
+p.left {text-align: left;}
+
+p.right {text-align: right;}
+
+p.center {text-align: center;}
+
+p.justify {text-align: justify;}
+
+/*Alinear el texto verticalmente vertical-align*/
+
+td.top{vertical-align: top;}
+
+td.middle{vertical-align: middle;}
+
+td.bot{vertical-align: bottom;}
+
+/*Propiedad text-decoration*/
+
+p.none{text-decoration: none;}
+
+p.inherit{text-decoration: inherit;}    /*hereda estilo de elemento padre*/
+
+p.overline{text-decoration: overline;}  /*línea arriba del texto*/
+
+p.underline{text-decoration: underline;} /*subrayado*/
+
+p.throught{text-decoration: line-through;} /*línea por la mitad*/
+
+/*Text-Indent poner espacio al principio de la primera línea de un texto*/
+/*valores positivos desplazan a la derecha, valores negativos a la izquierda*/
+
+p.indent{text-indent: 70px;}
+
+/*Poner sombra Text-shadow CSS*/
+/*los parámetros son: "distancia horizaontal", "distancia vertical", "Desenfoque", "Color"*/
+h3 {text-shadow: 7px, 4px 5px blue;}
+
+/*Propiedad Text-transform*/
+
+p.none {text-transform: none;}
+
+p.capi { text-transform: capitalize;} /*primera letra de cada palabra mayus*/
+
+p.upp {text-transform: uppercase;} /*todo a mayus*/
+
+p.low{text-transform: lowercase;} /*todo minus*/
+
+/*Propiedad letter-spacing marca la distancia entre la letras*/
+p.normal {letter-spacing: normal;}
+
+p.posit{letter-spacing: 4px;}
+
+p.neg {letter-spacing: -2px;}
+
+/*Propiedad Word-spacing, espacio entre palabras*/
+p.normal{word-spacing: normal;}
+
+p.positW{word-spacing: 8px;}
+
+p.nega{word-spacing: -2px;}
+
+/*Poner ancho y alto en un elemento HTML con CSS*/
+
+p.modificado{width: 150px;
+height: 90px;}
+
+/*Propiedad padding para poner rellenos*/
+
+.img {padding: 50px;}
+
+.elemento{padding: 40px, 20px, 65px, 80px}
+
+/*También existen rellenos independientes*/
+
+.img2{padding-top: 70px;
+    padding-right: 100px;}
+
+
+/*La propiedad Border*/
+
+p.borde{border: 7px solid blue}
+
+p.masborde{border-width: 8px;}
+
+p.borde {
+    border-bottom-width: 4px;
+    border-top-width: 7px;
+    border-left-width: 5px;
+    border-top-width: 8px;
+}
+
+/*otra forma de hacerlo con una única propiedad sería:*/
+p.borde{
+    border-width: 7px, 8px, 4px, 5px;
+}
+
+p.borde{
+    border-color: blue;
+}
+
+/*al igual que antes, existen border-top-color, etc.*/
+/*Pero se puede escribir de la siguiente forma:*/
+p.borde{
+    border-color: red blue yellow green;
+}
+
+/*Propiedad border-style*/
+
+p.borde{border-style: hidden;}  /*oculta el borde*/
+p.borde{border-style: none;}    /*evita que se muestre*/
+p.borde{border-style: solid;}   /*borde sólido, línea recta y continua*/
+p.borde{border-style: dotted;}  /*borde con puntos redondeados*/
+p.borde{border-style: dashed;}  /*borde de guiones*/
+p.borde{border-style: double;}  /*estilo con doble línea*/
+p.borde{border-style: groove;}  /*línea con apariencia tallada*/
+p.borde{border-style: ridge;}   /*borde con estilo extruido*/
+p.borde{border-style: inset;}   /*borde incrustado*/
+p.borde{border-style: outset;}  /*elemento parece relieve*/
+
+
+/*Propiedad Margin, establece un margen entre el borde y el contenido*/
+div.contenedor {
+    margin: 15px;
+}
+
+p.elemento {margin: 20px 30px;} /*margen vertical y horizontal*/
+p.elemento {margin: 10px 15px 14px;} /*margen superior, horizontal e inferior*/
+
+/*Propiedad baackground-color, sirve para colorear el fondo de las páginas*/
+
+p.morado {background-color: purple;}
+
+body{background-color: lightskyblue;}
+
+
+/*Propiedad list-style-type que se encarga de los marcadores de listas*/
+
+/*
+Los valores son los siguientes: disc, circle, square, decimal, "decimal-leading-zero", 
+"lower-roman", "upper-roman", "lower-greek", "lower-latin", "upper-latin"
+armenian, georgian, none.
+*/
+
+ul.circulo{list-style-type: square;}
+
+/*también se puede poner una imagen*/
+ul.conimgane{list-style-image: url("sonrisa.jpg");
+    list-style-position: inside;
+}
+
+/* CSS PARA TABLAS*/
+
+/*Propiedad border-collapse*/
+
+table.separado{border-collapse: separate;} /*los bordes deben de estar preparados*/
+
+table.colapso{border-collapse: collapse;}  /*los bordes deben estas colapsados en uno solo*/
+
+/*Propiedad border-spacing ¡SOLO FUNCIONA CON border-collapse: separate! */
+
+table.sinespacio {border-collapse: separate;}
+
+table.conespacio {border-collapse: separate;
+    border-spacing: 30px;}
+
+table.diferente{border-collapse: separate;
+    border-spacing: 70px 50px;}
+
+/*Propiedad caption-size, sirve para posicionar la leyenda de la tabla*/
+
+caption {caption-side: bottom;} /*o top*/
+
+/*Propiedad empty-cells establecer si se muestran o no los bordes de las celdas que no poseen nada en su interior*/
+
+table.hide{border-collapse: separate;
+    empty-cells: hide;}
+
+table.show{
+    border-collapse: separate;
+    empty-cells: show;
+}
+
+/*Propiedad table-layout, determinar el tamaño de las celdas, fijo o automático*/
+
+table.fixed {
+    table-layout: fixed;
+    width: 100px;
+}
+table.auto {
+    table-layout: auto;
+    width: 10px;
+}
+
+
+/*Pseudo selectores para maquetar enlaces con CSS*/
+
+/*
+    a: link. este sirve para apuntar a enlaces normales
+    a:visited. este sirve para apuntar a enlaces visitados por el usuario
+    a:hover. permite establecer el estilo cuando el cursor del ratón pasa por encima
+    a:active. enlaces en los que se ha hecho click y están activos
+*/
+
+a:hover.sobre{
+    color: #fff;
+    background-color: blue;
+    padding: 10px;
+    margin: 50px;
+    border: 3px solid green;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/*Personalizar cursor del ratón*/
+/*valores para la propiedad cursor
+    default.
+    help.
+    crosshair.
+    move.
+    pointer.
+*/
+
+/*Propiedad display, nos permite elegir como se muestran los elementos de una página*/
+/*pueden ser en línea o en bloque*/
+
+span {display: block;}
+a {display: block;}
+img{display: block;}
+
+
+
+/*La propiedad Visibility permite esablecer un elemento como visible o invisible*/
+/*visible / hidden*/
+
+img{visibility: visible;}
+
+
+/*POSICIONAMIENTO EN CSS: exiten tres formas relativo, absoluto y fijo*/
+
+/*Propiedad Position*/
+.amarillo{
+    position: relative;
+    bottom: 50px;
+    right: 80px;
+}
+
+/*Propiedad Overflow, permite controlar al hijo que excede el tamaño del padre*/
+/*
+    visible
+    hidden
+    scroll
+    auto
+    inherit
+*/

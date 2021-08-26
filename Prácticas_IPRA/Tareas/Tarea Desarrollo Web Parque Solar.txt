@@ -1,0 +1,23 @@
+Django
+
+Usuarios dados de alta. Cada user dueño de una o más instalaciones.
+Instalaciones agrupadas en parques solares.
+modelos => Usuarios, instalaciones (id_p)(id), paques solares(id)
+
+
+ParqueSolar:
+	nombre
+	ubicación
+	potencia_total
+
+id
+nombre_ubicacion
+potencia_total
+
+Instalación:
+	parque_solar -> ForeignKey(ParqueSolar)
+	referencia -> CharField
+	potencia -> FloatFiled
+	encendida -> Bool
+
+parque_solar_id
