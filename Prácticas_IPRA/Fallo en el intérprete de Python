@@ -1,0 +1,5 @@
+En mi caso, no importaba los módulos instalados por "pip":
+pasos para solucionarlo:
+  1- pulsa Control+Mayúsculas+P y empieza a escribir "Python".
+  2- Y en la lista que aparece selecciona "Python: Select interpreter.
+  3- Y a continuación, selecciona un intérprete que sepas que está accesible. Para asegurarte, puedes abrir fuera de VS Code el directorio que aparece en cada opción
