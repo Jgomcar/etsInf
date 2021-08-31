@@ -1,0 +1,134 @@
+CREATE TABLE juegos_mas_vendidos (
+	id INTEGER PRIMARY KEY,
+	nombre TEXT,
+	categoria char(20),
+	nota INTEGER,
+	precio NUMERIC
+);
+
+CREATE TABLE juegos_comprados (
+	id INTEGER PRIMARY KEY,
+	id_juego INTEGER,
+	experiencia TEXT,
+	horas_jugadas INTEGER
+);
+
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Call Of Duty", "Shooter", 10, 74.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Destiny", "Shooter", 8, 59.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Mario Karts", "Carreras", 9, 27.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Minecraft", "Aventura", 5, 24.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Until Dawn", "Misterio", 7, 15.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("SIMS3", "Plataformas", 3, 10.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Titanfall", "Shooter", 9, 70);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Need For Speed", "Carreras", 8, 55.99);
+INSERT INTO  juegos_mas_vendidos(nombre, categoria, nota, precio) VALUES ("Wow", "Plataformas", 10, 12.99);
+
+INSERT INTO juegos_comprados(id_juego, experiencia, horas_jugadas) VALUES (1, "Buena", 50);
+INSERT INTO juegos_comprados(id_juego, experiencia, horas_jugadas) VALUES (7, "Mala", 10);
+INSERT INTO juegos_comprados(id_juego, experiencia, horas_jugadas) VALUES (4, "Neutral", 28);
+INSERT INTO juegos_comprados(id_juego, experiencia, horas_jugadas) VALUES (3, "Buena", 45);
+
+/* Muestra el nombre de los juegos que son Shooters o de Carreras. */
+SELECT nombre FROM juegos_mas_vendidos WHERE categoria IN("Shooter", "Carreras");
+
+/* Muestra cuántos juegos hay de cada clase */
+SELECT categoria FROM  juegos_mas_vendidos GROUP BY categoria;
+
+/* Clasifica los juegos según la nota */
+SELECT nombre,
+	CASE 
+		WHEN nota > 8 THEN "Muy buen Juego"
+		WHEN nota > 6 THEN "Buen juego"
+		WHEN nota >= 5 THEN "Aprobado"
+		ELSE "MAL JUEGO"
+		END AS "Críticas"
+		FROM juegos_mas_vendidos;
+
+/* Mostrar solamente los juegos que he obtenido */
+SELECT * FROM juegos_mas_vendidos 
+	JOIN juegos_comprados 
+	ON juegos_comprados.id_juego = juegos_mas_vendidos.id ;
+/* Sumar el precio total de todos los juegos */
+SELECT SUM(precio) FROM juegos_mas_vendidos ;
+
+/* ¿Cuánto me he gastado comprando juegos? */
+SELECT SUM(precio) FROM juegos_mas_vendidos 
+	JOIN juegos_comprados
+	ON juegos_mas_vendidos.id = juegos_comprados.id_juego ;
+
+/* Averiguar nombre y precio de los juegos que tienen una nota de 7 hacia arriba y están en las categorias: Shooter, Carreras, Misterio o Aventura */
+SELECT nombre, precio FROM juegos_mas_vendidos WHERE nota >= 7 AND categoria IN ("Shooter", "Carreras", "Misterio", "Aventura");
+
+/* Mostrar categorias se repiten más de una vez */
+SELECT categoria FROM juegos_mas_vendidos GROUP BY categoria HAVING COUNT(*) >= 2;
+
+/* Modificar una tabla ya creada añadiendo una columna de antiguedad del juego */
+ALTER TABLE juegos_comprados ADD antiguedad INTEGER ;
+
+/* Nos hemos "equivocado" al añadir una columna: para borrarla */
+ALTER TABLE juegos_comprados DROP COLUMN antiguedad ;
+
+/* Modificamos ahora bien, añadiendo la columna antigüedad, con el valor 0 por defecto */
+ALTER TABLE juegos_comprados ADD antigüedad INTEGER default 0;
+
+/* Uso del LIKE para palabras parecidas pero no coincidentes en su totalidad o en toda la frase */
+/* En este caso, muestra la tabla con los datos en cuya experiencia aparece una "u" */
+SELECT * FROM juegos_comprados WHERE experiencia LIKE "%u%";
+
+/* La media de horas jugadas totales */
+SELECT AVG(horas_jugadas) FROM juegos_comprados ;
+
+/* Uno de los juegos tiene 3 años y quiero cambiarle la antigüedad */
+UPDATE juegos_comprados SET antigüedad = 3 WHERE id=3;
+
+/* Uno de los juegos tiene 1 años y quiero cambiarle la antigüedad */
+UPDATE juegos_comprados SET antigüedad = 1 WHERE id=4;
+
+/* Ordenar de juegos más antiguos a más nuevos */
+SELECT juegos_mas_vendidos.nombre, juegos_comprados.antigüedad FROM juegos_mas_vendidos
+	JOIN juegos_comprados 
+	ON juegos_mas_vendidos.id = juegos_comprados.id_juego 
+	ORDER BY  juegos_comprados.antigüedad DESC ;
+
+/* Ordenar de juegos menos horas jugandas a más */
+SELECT juegos_mas_vendidos.nombre, juegos_mas_vendidos.nota, juegos_comprados.horas_jugadas FROM juegos_mas_vendidos
+	JOIN juegos_comprados 
+	ON juegos_mas_vendidos.id = juegos_comprados.id_juego 
+	ORDER BY  juegos_comprados.horas_jugadas ;  
+
+/* Ordenar de juegos menos horas jugandas a más */
+SELECT juegos_mas_vendidos.nombre, juegos_mas_vendidos.nota, juegos_comprados.experiencia ,juegos_comprados.horas_jugadas FROM juegos_mas_vendidos
+	JOIN juegos_comprados 
+	ON juegos_mas_vendidos.id = juegos_comprados.id_juego 
+	ORDER BY  juegos_comprados.horas_jugadas ;  
+
+/* Creamos una última tabla */
+CREATE TABLE juegos_de_juan(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_juego INTEGER,
+	antigüedad INTEGER
+
+);
+
+/* Insertando los juegos que tiene Juan y su antiguedad */
+INSERT INTO juegos_de_juan (id_juego, antigüedad) VALUES (1, 1);
+INSERT INTO juegos_de_juan (id_juego, antigüedad) VALUES (3, 2);
+INSERT INTO juegos_de_juan (id_juego, antigüedad) VALUES (5, 5);
+
+/* Mostrar el nombre de los juegos que tenemos Juan y yo, y las antigüedades de cada uno */
+SELECT juegos_mas_vendidos.nombre, juegos_comprados.antigüedad AS Mi_antigüedad, juegos_de_juan.antigüedad AS Antigüedad_Juan 
+	FROM juegos_comprados JOIN juegos_de_juan JOIN juegos_mas_vendidos
+		ON juegos_comprados.id_juego = juegos_de_juan.id_juego AND juegos_comprados.id_juego = juegos_mas_vendidos.id;
+
+/* Mostrar el nombre de los juegos que tenemos Juan y yo, y las antigüedades de cada uno */ /* OTRA FORMA */
+SELECT juegos_mas_vendidos.nombre, juegos_comprados.antigüedad AS Mi_antigüedad, juegos_de_juan.antigüedad AS Antigüedad_Juan 
+	FROM juegos_comprados JOIN juegos_de_juan, juegos_mas_vendidos
+		ON juegos_comprados.id_juego = juegos_de_juan.id_juego AND juegos_comprados.id_juego = juegos_mas_vendidos.id;
+
+/* Mostrar todos mis juegos y los coincidentes con los de Juan */
+SELECT * FROM juegos_comprados LEFT JOIN juegos_de_juan ON juegos_comprados.id_juego = juegos_de_juan.id_juego ;
+
+/* Juegos totales que tenemos Juan y yo en subconsulta anidada*/
+SELECT nombre FROM juegos_mas_vendidos WHERE id IN(
+	SELECT juegos_comprados.id_juego FROM juegos_comprados JOIN juegos_de_juan 
+);
